@@ -7,16 +7,17 @@
 //
 
 import Foundation
-
+//  Класс для хранения данных в каталоге.
+// С помощью UserDefaults храним тикер и название компании.
 final class UserSettings {
     private init() {}
-    
+
     static func getTickerAndNames() -> [String:String] {
         let dictFromDefaults = UserDefaults.standard.object([String: String].self, with: "stock")
         guard let dict = dictFromDefaults else { return [:] }
         return dict
     }
-    
+
     static func saveDictionary(dict: [String:String]) {
         UserDefaults.standard.removeObject(forKey: "stock")
         UserDefaults.standard.set(object: dict, forKey: "stock")

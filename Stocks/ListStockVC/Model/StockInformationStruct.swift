@@ -6,9 +6,9 @@
 //  Copyright © 2020 Dobrotolyubov Danila. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-struct StockInformation {
+class StockInformation {
     
     let ticker:String
     let companyName:String
@@ -18,6 +18,7 @@ struct StockInformation {
     let openPrice:Double
     let latestPrice:Double
     let change: Double
+    var image: UIImage?
     
     //Инициализатор для каста данных
     init? (json: [String:Any]) {
@@ -37,5 +38,23 @@ struct StockInformation {
         self.openPrice = openPrice
         self.latestPrice = latestPrice
         self.change = ((latestPrice - openPrice)*1000).rounded()/1000
+    }
+    
+    init? (stock: Stock) {
+        guard let ticker = stock.ticker else { return nil }
+        guard let name = stock.companyName else { return nil }
+        
+        guard let imageData = stock.image else { return nil }
+        guard let image = UIImage(data: imageData) else { return nil }
+        
+        self.image = image
+        self.companyName = name
+        self.ticker = ticker
+        self.exchange = ""
+        self.openTime = 0
+        self.closeTime = 0
+        self.latestPrice = stock.price
+        self.change = stock.changePrice
+        self.openPrice = 0
     }
 }
