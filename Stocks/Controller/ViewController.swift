@@ -17,28 +17,31 @@ class ViewController: UIViewController, StockNetworkManagerDelegate {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var pickerView: UIPickerView!
     
-    private lazy var companies = [
-        "Apple": "AAPL",
-        "Microsoft": "MSFT",
-        "Google": "GOOG",
-        "Amazon": "AMZN",
-        "Facebook": "FB"
-    ]
+    
+    
+    private var companies: [String:String] = [:] {
+        didSet {
+            if companies.isEmpty { pickerView.isHidden = true } else { pickerView.isHidden = false
+                pickerView.reloadAllComponents()
+            }
+            
+        }
+    }
     
     var networkManager = StockNetworkManager()
-    var stock:StockInformation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         networkManager.delegate = self
         
-        activityIndicator.hidesWhenStopped = true
-        
         pickerView.delegate = self
         pickerView.dataSource = self
         
-        requestQuoteUpdate()
+        activityIndicator.hidesWhenStopped = true
+        
+        companies = UserSettings.getTickerAndNames()
+        if !companies.isEmpty { requestQuoteUpdate() }
     }
     
     private func requestQuoteUpdate() {
@@ -47,6 +50,7 @@ class ViewController: UIViewController, StockNetworkManagerDelegate {
         tickerLabel.text = "–"
         priceLabel.text = "–"
         priceChangeLabel.text = "–"
+        priceChangeLabel.textColor = .black
         
         let selectedRow = pickerView.selectedRow(inComponent: 0)
         let selectedSymbol = Array(companies.values)[selectedRow]
@@ -57,10 +61,32 @@ class ViewController: UIViewController, StockNetworkManagerDelegate {
         nameLabel.text = stock.companyName
         priceLabel.text = String(stock.latestPrice)
         tickerLabel.text = stock.ticker
-        let change = ((stock.latestPrice - stock.openPrice)*1000).rounded()/1000
-        priceChangeLabel.text = String(change)
+        
+        priceChangeLabel.text = String(stock.change)
+        priceChangeLabel.textColor = stock.change >= 0 ? .green : .red
         
         activityIndicator.stopAnimating()
+        
+        if companies[stock.companyName] == nil {
+            companies[stock.companyName] = stock.ticker
+            UserSettings.saveDictionary(dict: companies)
+        }
+    }
+    
+    @IBAction func searchButtonPressed() {
+        
+        let alert = UIAlertController(title: "Enter the Ticker",
+                                      message: "Enter the stock Ticker to see the metrics.",
+                                      preferredStyle: .alert)
+        alert.addTextField { (field) in
+            field.placeholder = "Ticker"
+        }
+        alert.addAction(UIAlertAction(title: "Canсel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Search", style: .default, handler: { (action) in
+            guard let symbol = alert.textFields?.first?.text else { return }
+            self.networkManager.requestQuote(for: symbol)
+        }))
+        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -87,4 +113,6 @@ extension ViewController: UIPickerViewDelegate {
         self.requestQuoteUpdate()
     }
 }
+
+
 

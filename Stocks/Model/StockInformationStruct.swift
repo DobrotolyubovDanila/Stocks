@@ -17,7 +17,9 @@ struct StockInformation {
     let closeTime:Int
     let openPrice:Double
     let latestPrice:Double
+    let change: Double
     
+    //Инициализатор для каста данных
     init? (json: [String:Any]) {
         guard let ticker = json["symbol"] as? String,
         let companyName = json["companyName"] as? String,
@@ -34,5 +36,6 @@ struct StockInformation {
         self.closeTime = closeTime
         self.openPrice = openPrice
         self.latestPrice = latestPrice
+        self.change = ((latestPrice - openPrice)*1000).rounded()/1000
     }
 }
