@@ -19,6 +19,7 @@
 		E065032524FAC17100D2F53E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E065032424FAC17100D2F53E /* Main.storyboard */; };
 		E065032724FAC17E00D2F53E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E065032624FAC17E00D2F53E /* LaunchScreen.storyboard */; };
 		E065034A24FAD24C00D2F53E /* StockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E065034924FAD24C00D2F53E /* StockNetworkManager.swift */; };
+		E0754CA524FC45E8003B79EF /* READ ME.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E0754CA424FC45E8003B79EF /* READ ME.rtf */; };
 		E08B1E8924FADB2300FDAE1C /* Stocks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E08B1E8724FADB2300FDAE1C /* Stocks.xcdatamodeld */; };
 		E08B1E9A24FB31C100FDAE1C /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B1E9924FB31C100FDAE1C /* UserSettings.swift */; };
 		E0A4320524FA65E1004C6D6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4320424FA65E1004C6D6C /* AppDelegate.swift */; };
@@ -41,6 +42,7 @@
 		E065032424FAC17100D2F53E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E065032624FAC17E00D2F53E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E065034924FAD24C00D2F53E /* StockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockNetworkManager.swift; sourceTree = "<group>"; };
+		E0754CA424FC45E8003B79EF /* READ ME.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "READ ME.rtf"; sourceTree = "<group>"; };
 		E08B1E8824FADB2300FDAE1C /* model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = model.xcdatamodel; sourceTree = "<group>"; };
 		E08B1E9924FB31C100FDAE1C /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		E0A4320124FA65E1004C6D6C /* Stocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +203,7 @@
 		E0A431F824FA65E1004C6D6C = {
 			isa = PBXGroup;
 			children = (
+				E0754CA424FC45E8003B79EF /* READ ME.rtf */,
 				E0A4320324FA65E1004C6D6C /* Stocks */,
 				E0A4320224FA65E1004C6D6C /* Products */,
 			);
@@ -294,6 +297,7 @@
 			files = (
 				E065032524FAC17100D2F53E /* Main.storyboard in Resources */,
 				E065032724FAC17E00D2F53E /* LaunchScreen.storyboard in Resources */,
+				E0754CA524FC45E8003B79EF /* READ ME.rtf in Resources */,
 				E0A4321124FA65E5004C6D6C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
