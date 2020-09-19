@@ -7,13 +7,7 @@
 //
 
 
-//      Я ДОПУСТИЛ ОШИБКУ, ВЫЧИСЛЯЯ ЗНАЧЕНИЕ change.
-//      ЕГО НАДО БЫЛО БРАТЬ ИХ json. ЗНАЧЕНИЯ openTime, closeTime ВООБЩЕ НЕ НУЖНЫ!
-//      А ЗНАЧЕНИЕ openPrice МОЖЕТ ВЕРНУТЬСЯ КАК null. ИЗ-ЗА ЭТОГО ИЗНАЧАЛЬНАЯ ВЕРСИЯ
-//      ПРОГРАММЫ РАБОТАЕТ ТОЛЬКО КОГДА ЭТИ ПАРАМЕТРЫ НЕ null. Я ПОНЯЛ, ЧТО ЭТО ПОСЛЕ
-//      ЗАКРЫТИЯ ТОРГОВ В США.
 
-//      В ДАННОМ КЛАССЕ ВСЕ ИСПРАВЛЕННО И ГОТОВО К РАБОТЕ!
 import UIKit
 
 class StockInformation {
@@ -46,7 +40,7 @@ class StockInformation {
 //        self.closeTime = closeTime
 //        self.openPrice = openPrice
         self.latestPrice = latestPrice
-        self.change = change //((latestPrice - openPrice)*1000).rounded()/1000
+        self.change = change 
     }
     
     init? (stock: Stock) {
